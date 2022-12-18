@@ -61,7 +61,7 @@ class PageEventos extends Component {
 // Peticion para traer los equipos disponibles en la db
   peticionGetEquipos = () => {
     axios.get(urlEquipos).then(response => {
-      console.log(this.state.form);
+      //console.log(this.state.form);
       this.setState({ dataEquipos: response.data })
     }).catch(error => {
       console.log(error.message);
@@ -90,6 +90,7 @@ class PageEventos extends Component {
 
   peticionPut = () => {
     axios.put(url + field_id + this.state.form.mar_id, this.state.form).then(response => {
+      //console.log(response)
       this.modalInsertar()
       this.peticionGet()
     }).catch(error => {
@@ -112,9 +113,9 @@ class PageEventos extends Component {
       tipoModal: 'actualizar',
       form: {
         mar_id: marcador.mar_id,
-        mar_fechaevento: marcador.mar_fechaevento,
+        mar_fechaevento: marcador.mar_fechaevento.slice(0,10),
         mar_horaevento: marcador.mar_horaevento,
-        mar_fecharegistro: marcador.mar_fecharegistro,
+        mar_fecharegistro: marcador.mar_fecharegistro.slice(0,10),
         mar_horaregistro: marcador.mar_horaregistro,
         equi_id1: marcador.equi_id1,
         equi_id2: marcador.equi_id2,

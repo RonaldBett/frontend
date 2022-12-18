@@ -51,7 +51,7 @@ class PageInicio extends Component{
           {this.state.data.map(marcadores => {
             return(
               <tr key={marcadores.mar_id}>
-                <td>{marcadores.mar_fechaevento}</td>
+                <td>{marcadores.mar_fechaevento.slice(0,10)}</td>
                 <td>{marcadores.hora}</td> 
                 <td>{marcadores.nombre1}</td> 
                 <td>{marcadores.marcador1}</td>
