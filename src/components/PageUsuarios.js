@@ -8,7 +8,7 @@ import { faEdit, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 import { Modal, ModalBody, ModalFooter, ModalHeader } from 'reactstrap';
 
 
-const url = 'http://localhost:9000/api/usuarios'
+const url = 'http://129.146.172.44:9000/api/usuarios'
 const field_id = '/usu_id/'
 
 

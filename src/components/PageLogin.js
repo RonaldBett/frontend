@@ -7,7 +7,7 @@ import axios from 'axios'
 
 import Cookies from 'universal-cookie'
 
-const urlLogin="http://localhost:9000/api/usuarios"
+const urlLogin="http://129.146.172.44:9000/api/usuarios"
 
 
 const cookies = new Cookies();

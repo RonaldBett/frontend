@@ -8,9 +8,9 @@ import Cookies from 'universal-cookie';
 
 const cookies = new Cookies();
 
-const url = 'http://localhost:9000/api/marcadores'
-const urlEquipos = 'http://localhost:9000/api/equipos' /////////
-const urlDeportes = 'http://localhost:9000/api/deportes' ////////
+const url = 'http://129.146.172.44:9000/api/marcadores'
+const urlEquipos = 'http://129.146.172.44:9000/api/equipos' /////////
+const urlDeportes = 'http://129.146.172.44:9000/api/deportes' ////////
 const field_id = '/mar_id/'
 
 class PageEventos extends Component {
