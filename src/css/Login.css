@@ -1,13 +1,17 @@
+.container-signin-login {
+  display: flex;
+  width: 100%;
+  padding: 40px;
+  align-items: center;
+  justify-content: center;
+}
+
 .containerPrincipal {
-    position: absolute;
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%, -50%);
-      border: 1px solid blue;
-      padding: 40px;
-      background-color: white;
-  }
-  
-  .containerSecundario{
-    text-align: center;
-  }
+  border: 1px solid blue;
+  background-color: white;
+  padding: 40px;
+}
+
+.containerSecundario {
+  text-align: center;
+}

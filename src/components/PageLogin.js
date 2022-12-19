@@ -7,94 +7,96 @@ import axios from 'axios'
 
 import Cookies from 'universal-cookie'
 
-const urlLogin="http://129.146.172.44:9000/api/usuarios"
+const urlLogin = "http://129.146.172.44:9000/api/usuarios"
 
 
 const cookies = new Cookies();
 
 
 class PageLogin extends Component {
-    state={
-        form:{
+    state = {
+        form: {
             username: '',
             password: ''
         }
-        
+
     }
 
-    handleChange=async e=>{
+    handleChange = async e => {
         await this.setState({
-            form:{
+            form: {
                 ...this.state.form,
-                [e.target.name]:e.target.value
+                [e.target.name]: e.target.value
             }
         })
         //console.log(this.state.form)
     }
 
-    iniciarSesion=async()=>{
-        let name=this.state.form.username
-        let pwd=this.state.form.password
-        if(name.length<=0 || pwd.length<=0){
+    iniciarSesion = async () => {
+        let name = this.state.form.username
+        let pwd = this.state.form.password
+        if (name.length <= 0 || pwd.length <= 0) {
             alert('Se requieren todos los datos')
             return "Datos Vacios"
         }
 
-                
+
         //para cambiar usuario admin
-        
-        await axios.get(urlLogin+"/"+name+"/"+pwd)
-        .then(response=>{
-            //console.log(response.data)
-            return response.data
-        }).then(response=>{
-            if(response.length>0){
-              var resp=response[0] // para evitar llamados tan largos con corchetes
-              cookies.set("usu_id",resp.usu_id,{path:"/"})/// el path es para que se puedan acceder de cualquier pagina
-              cookies.set("usu_email",resp.usu_email,{path:"/"})
-              cookies.set("usu_nombres",resp.usu_nombres,{path:"/"})
-              cookies.set("usu_apellidos",resp.usu_apellidos,{path:"/"})
-              alert("Bienveni@ "+resp.usu_nombres)
-              
-              window.location.href='./'
-            }else{
-                alert("Verificar Usuario y/o Clave")
-            }
-        })
-        .catch(error=>{
-            console.log(error)
-        })
+
+        await axios.get(urlLogin + "/" + name + "/" + pwd)
+            .then(response => {
+                //console.log(response.data)
+                return response.data
+            }).then(response => {
+                if (response.length > 0) {
+                    var resp = response[0] // para evitar llamados tan largos con corchetes
+                    cookies.set("usu_id", resp.usu_id, { path: "/" })/// el path es para que se puedan acceder de cualquier pagina
+                    cookies.set("usu_email", resp.usu_email, { path: "/" })
+                    cookies.set("usu_nombres", resp.usu_nombres, { path: "/" })
+                    cookies.set("usu_apellidos", resp.usu_apellidos, { path: "/" })
+                    alert("Bienveni@ " + resp.usu_nombres)
+
+                    window.location.href = './'
+                } else {
+                    alert("Verificar Usuario y/o Clave")
+                }
+            })
+            .catch(error => {
+                console.log(error)
+            })
 
     }
 
 
     render() {
-        return(
-        <div className="containerPrincipal">
-            <div className="containerSecundario">
-                <div className="form-group">
-                    <label>Usuario: </label>
-                    <br />
-                    <input
-                        type="text"
-                        className="form-control"
-                        name="username"
-                        onChange={this.handleChange}
-                    />
-                    <br />
-                    <label>Contraseña: </label>
-                    <br />
-                    <input
-                        type="password"
-                        className="form-control"
-                        name="password"
-                        onChange={this.handleChange}
-                    />
-                    <br />
-                    <button className="btn btn-primary" onClick={() => this.iniciarSesion()}>Iniciar Sesión</button>
+        return (
+            <div className="container-signin-login">
+                <div className="containerPrincipal">
+                    <div className="containerSecundario">
+                        <div className="form-group">
+                            <label>Usuario: </label>
+                            <br />
+                            <input
+                                type="text"
+                                className="form-control"
+                                name="username"
+                                onChange={this.handleChange}
+                            />
+                            <br />
+                            <label>Contraseña: </label>
+                            <br />
+                            <input
+                                type="password"
+                                className="form-control"
+                                name="password"
+                                onChange={this.handleChange}
+                            />
+                            <br />
+                            <button className="btn btn-primary" onClick={() => this.iniciarSesion()}>Iniciar Sesión</button>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
         )
     }
 }

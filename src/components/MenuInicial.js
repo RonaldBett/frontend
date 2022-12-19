@@ -60,6 +60,10 @@ class MenuInicial extends Component {
                                 <Link className="nav-link" aria-current="page" to='/PageLogin'>Login</Link>
                             </li>
 
+                            <li className="nav-item" hidden={this.state.estaLoguin}>
+                                <Link className="nav-link" aria-current="page" to='/PageSignin'>Registrarse</Link>
+                            </li>
+
                             <li className="nav-item" hidden={!this.state.estaLoguin}>
                                 <Link className="nav-link" aria-current="page" to='/PageEventos'>Eventos</Link>
                             </li>

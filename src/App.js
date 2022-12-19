@@ -9,6 +9,7 @@ import PageEventos from './components/PageEventos';
 import PageUsuarios from './components/PageUsuarios';
 import MenuInicial from './components/MenuInicial';
 import PageLogin from './components/PageLogin';
+import PageSignin from './components/PageSignin';
 import Cookies from 'universal-cookie';
 
 //import {Civil} from './components/Civil';
@@ -23,6 +24,7 @@ class App extends Component {
           <Routes>
             <Route path="/" element={<PageInicio />} />
             <Route path="/PageLogin" element={<PageLogin />} />
+            <Route path="/PageSignin" element={<PageSignin />} />
           {
               
               cookies.get("usu_nombres")=='admin'? 
