@@ -5,6 +5,7 @@ import 'bootstrap/js/dist/collapse'
 import 'bootstrap/js/dist/offcanvas'
 import 'bootstrap/js/dist/dropdown'
 import { Link } from 'react-router-dom'
+import Logo from '../images/Logo.png'
 
 import Cookies from 'universal-cookie'
 const cookies = new Cookies();
@@ -50,7 +51,7 @@ class MenuInicial extends Component {
             <nav className="navbar navbar-expand-lg">
                 <div className="container-fluid">
                     <Link className="navbar-brand" to='/' >
-                        <img src='./Logo.png' width={80} height={40} alt="Deportes" />
+                        <img src={Logo} width={80} height={40} alt="Deportes" />
                     </Link>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
