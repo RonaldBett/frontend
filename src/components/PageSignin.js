@@ -144,7 +144,7 @@ class PageLogin extends Component {
               />
               <br />
 
-              <button className="btn btn-primary" onClick={() => this.registrarUsuario()}>Registrarse</button>
+              <button className="btn btn-success" onClick={() => this.registrarUsuario()}>Registrarse</button>
             </div>
           </div>
         </div>

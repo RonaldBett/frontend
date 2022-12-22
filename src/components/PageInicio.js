@@ -1,70 +1,65 @@
 import React, { Component } from 'react'
-
+import CardEvento from './CardEvento.js';
 import axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 
-const urlEventos = 'http://129.146.172.44:9000/api/marcadores/2'
+const urlEventos = 'http://129.146.172.44:9000/api/marcadores/3'
 
 
 
-class PageInicio extends Component{
-   
-    state={
-        data: []
-    }
+class PageInicio extends Component {
+
+  state = {
+    data: []
+  }
 
 
-    peticionGet = () => {
-        axios.get(urlEventos).then(response => {
-          //console.log(response.data);
-          this.setState({data:response.data})
-        }).catch(error => {
-          console.log(error.message);
-        })
-      }
+  peticionGet = () => {
+    axios.get(urlEventos).then(response => {
+      //console.log(response.data);
+      this.setState({ data: response.data })
+    }).catch(error => {
+      console.log(error.message);
+    })
+  }
 
-      componentDidMount(){
-        this.peticionGet()
-      }
+  componentDidMount() {
+    this.peticionGet()
+  }
 
 
-    render(){
-        return <div>
-            <table className="table ">
-        <thead>
-          <tr>
-            <th>Fecha</th>
-            <th>Hora</th>
-            <th>Equipo1</th>
-            <th>Marcador1</th>            
-            <th>Equipo2</th>
-            <th>Marcador2</th>            
-            <th>Deporte</th>
-                        
-           
-            
-            
-          </tr>
-        </thead>
-        <tbody>
-          {this.state.data.map(marcadores => {
-            return(
-              <tr key={marcadores.mar_id}>
-                <td>{marcadores.mar_fechaevento.slice(0,10)}</td>
-                <td>{marcadores.hora}</td> 
-                <td>{marcadores.nombre1}</td> 
-                <td>{marcadores.marcador1}</td>
-                <td>{marcadores.nombre2}</td>
-                <td>{marcadores.marcador2}</td>
-                <td>{marcadores.deportes}</td>   
-              </tr>
-            )
-          })}
-        </tbody>
-        </table>
+  render() {
+    return (
+
+      <div>
+
+        <br /><br /><br />
+
+        <div id="div_items">
+          <div className='container'>
+            <div id='div_rows_items' className='row'>
+              {this.state.data.map(marcador => {
+                return (
+                  <CardEvento
+                    deporte={marcador.deportes}
+                    eLocal={marcador.nombre1}
+                    eVisitante={marcador.nombre2}
+                    mLocal={marcador.marcador1}
+                    mVisitante={marcador.marcador2}
+                    FechaE={marcador.mar_fechaevento.slice(0, 10) + '/' + marcador.hora}
+                  />
+                )
+              })}
+            </div>
+          </div>
         </div>
-    }
+
+        
+      </div>
+
+    )
+  }
 }
 
 export default PageInicio;

@@ -1,0 +1,65 @@
+.div-btn-agregar {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn-success {
+    background-color: gray;
+    border: 2px solid white;
+}
+
+.btn-success:hover {
+    background-color: rgb(0, 17, 0);
+    border: 2px solid white;
+}
+
+.btn-danger{
+    background-color: rgb(82, 81, 81);
+    border: 2px solid white;
+}
+
+.btn-danger:hover {
+    background-color: rgb(0, 17, 0);
+    border: 2px solid white;
+}
+
+.icono-editar {
+    color: rgb(0, 0, 0);
+}
+
+.icono-borrar {
+    color: rgb(0, 0, 0);
+}
+
+.icono-editar:hover {
+    color: blue;
+}
+
+.icono-borrar:hover {
+    color: red;
+}
+
+.page-usuarios {
+    justify-content: center;
+    width: 100%;
+}
+
+.show {
+    background-color: rgba(0, 0, 0, 0.459);
+}
+
+.modal-principal {
+    background: rgba(92, 92, 92, 0.486);
+}
+
+table{
+    width: 350px;
+    background: rgba(255, 255, 255, 0.336);
+    border-radius: 8px;
+    margin: 5px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 1);
+    backdrop-filter: blur(8px);
+    color: #f8f8f8;
+}

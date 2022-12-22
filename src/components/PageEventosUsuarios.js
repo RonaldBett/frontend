@@ -5,6 +5,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEdit, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 import { Modal, ModalBody, ModalFooter, ModalHeader } from 'reactstrap';
+import CardEvento from './CardEvento.js';
 import Cookies from 'universal-cookie';
 
 const cookies = new Cookies();
@@ -14,7 +15,7 @@ const urlEquipos = 'http://129.146.172.44:9000/api/equipos' /////////
 const urlDeportes = 'http://129.146.172.44:9000/api/deportes' ////////
 const field_id = '/mar_id/'
 
-class PageEventos extends Component {
+class PageEventosUsuarios extends Component {
 
   state = {
     data: [],
@@ -273,8 +274,6 @@ class PageEventos extends Component {
 
     return (
       <div className="App">
-        <h1> TABLA MARCADORES</h1>
-        <br /><br /><br />
 
         {/* Contendor de la seccion de filtros */}
         <div className="div_filtros_eventos">
@@ -377,56 +376,36 @@ class PageEventos extends Component {
           Agregar Marcador
         </button>
         <br /><br />
-        <table className="table ">
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>Fecha/Hora Evento</th>
-              <th>Fecha/Hora Registro</th>
-              <th>Local</th>
-              <th>Marcadores</th>
-              <th>Visitante</th>
-              <th>Deporte</th>
-              <th hidden={cookies.get('usu_nombres') != 'admin'}>ID Usuario</th>
-              <th>Acciones</th>
-            </tr>
-          </thead>
-          <tbody>
-            {this.state.data.map(marcador => {
-              return (
-                <tr>
-                  <td>{marcador.mar_id}</td>
-                  <td>{marcador.mar_fechaevento.slice(0, 10) + '/' + marcador.mar_horaevento}</td>
-                  <td>{marcador.mar_fecharegistro.slice(0, 10) + '/' + marcador.mar_horaregistro}</td>
-                  <td>{marcador.equi_id1.equi_nombre}</td>
-                  <td>{marcador.mar_marcadorequi1 + ':' + marcador.mar_marcadorequi2}</td>
-                  <td>{marcador.equi_id2.equi_nombre}</td>
-                  <td>{marcador.dep_id.dep_nombre}</td>
-                  <td hidden={cookies.get('usu_nombres') != 'admin'}>{marcador.usu_id}</td>
-                  <td>
-                    <button
-                      className="btn btn-"
-                      onClick={() => { this.seleccionarDeporte(marcador); this.modalInsertar() }}
-                    >
-                      <FontAwesomeIcon className="icono-editar" icon={faEdit} />
-                    </button>{" "}
-                    <button
-                      className="btn btn-"
-                      onClick={() => { this.seleccionarDeporte(marcador); this.modalEliminar() }}
-                    >
-                      <FontAwesomeIcon className="icono-borrar" icon={faTrashAlt} />
-                    </button>
-                  </td>
-                </tr>
-              )
-            })}
-          </tbody>
-        </table>
+
+        <div id="div_items">
+          <div className='container'>
+            <div id='div_rows_items' className='row'>
+              {this.state.data.map(marcador => {
+                return(
+                  <CardEvento 
+                  id={'ID:' + marcador.mar_id + '-'}
+                  deporte={marcador.dep_id.dep_nombre}
+                  eLocal={marcador.equi_id1.equi_nombre}
+                  eVisitante={marcador.equi_id2.equi_nombre}
+                  mLocal={marcador.mar_marcadorequi1}
+                  mVisitante={ marcador.mar_marcadorequi2}
+                  FechaR={'FR:' + marcador.mar_fecharegistro.slice(0, 10) + '/' + marcador.mar_horaregistro}
+                  FechaE={marcador.mar_fechaevento.slice(0, 10) + '/' + marcador.mar_horaregistro}
+                  btnEditar={<FontAwesomeIcon className="icono-editar" icon={faEdit} />}
+                  funcionEdi={() => { this.seleccionarDeporte(marcador); this.modalInsertar() }}
+                  btnEliminar={<FontAwesomeIcon className="icono-borrar" icon={faTrashAlt} />}
+                  funcionEli={() => { this.seleccionarDeporte(marcador); this.modalEliminar() }}
+                />
+                )
+              })}
+            </div>
+          </div>
+        </div>
 
         <Modal isOpen={this.state.modalInsertar}>
-          <ModalHeader style={{ display: 'block' }}>
+          <ModalHeader className="modal-principal" style={{ display: 'block' }}>
           </ModalHeader>
-          <ModalBody>
+          <ModalBody className="modal-principal">
             <div>
 
               {/* El hidden es para mostrar este input solo en la ventana modal ingresar */}
@@ -590,7 +569,7 @@ class PageEventos extends Component {
 
             </div>
           </ModalBody>
-          <ModalFooter>
+          <ModalFooter className="modal-principal">
             {
               this.state.tipoModal === 'insertar' ?
                 <button className="btn btn-success" onClick={() => this.peticionPost()}>Insertar</button>
@@ -616,4 +595,4 @@ class PageEventos extends Component {
   }
 }
 
-export default PageEventos;
+export default PageEventosUsuarios;

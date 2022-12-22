@@ -1,0 +1,38 @@
+.tarjeta {
+    width: 350px !important;
+    background: rgba(0, 0, 0, 0.336)!important;
+    border-radius: 8px!important;
+    margin: 5px!important;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 1)!important;
+    backdrop-filter: blur(6px)!important;
+    color: #f8f8f8!important;
+}
+
+.card-body {
+    padding: 0;
+}
+
+.tarjeta-title {
+    text-align: center;
+    color: goldenrod;
+    font-weight: bold;
+    margin: 15px;
+}
+
+.tarjeta-subtitle {
+    text-align: center;
+    margin: 15px;
+    color: white;
+    font-weight: bold;
+}
+
+#card_id {
+    text-align: left;
+    font-size: 10px;
+    margin: 0;
+}
+
+.contenedor-botones-card {
+    display: flex;
+    justify-content: right;
+}

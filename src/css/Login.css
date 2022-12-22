@@ -7,9 +7,16 @@
 }
 
 .containerPrincipal {
-  border: 1px solid blue;
-  background-color: white;
   padding: 40px;
+  width: 350px;
+  background: rgba(0, 0, 0, 0.336);
+  border-radius: 8px;
+  margin: 5px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 1);
+  backdrop-filter: blur(6px);
+  color: #f8f8f8;
+  font-weight: bold;
+  font-size: 20px;
 }
 
 .containerSecundario {

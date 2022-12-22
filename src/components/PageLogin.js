@@ -92,7 +92,7 @@ class PageLogin extends Component {
                                 onChange={this.handleChange}
                             />
                             <br />
-                            <button className="btn btn-primary" onClick={() => this.iniciarSesion()}>Iniciar Sesión</button>
+                            <button className="btn btn-success" onClick={() => this.iniciarSesion()}>Iniciar Sesión</button>
                         </div>
                     </div>
                 </div>

@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-
-import '../App.css';
+import '../css/PageTablasBotones.css';
 import axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';

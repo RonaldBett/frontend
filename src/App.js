@@ -6,6 +6,7 @@ import PageInicio from './components/PageInicio';
 import PageDeportes from './components/PageDeportes';
 import PageEquipos from './components/PageEquipos';
 import PageEventos from './components/PageEventos';
+import PageEventosUsuarios from './components/PageEventosUsuarios';
 import PageUsuarios from './components/PageUsuarios';
 import MenuInicial from './components/MenuInicial';
 import PageLogin from './components/PageLogin';
@@ -39,7 +40,8 @@ class App extends Component {
                 cookies.get("usu_nombres")?
                 [
                   
-                  <Route path="/PageEventos" element={<PageEventos />} />                 
+                  <Route path="/PageEventos" element={<PageEventos />} />,
+                  <Route path="/PageEventosUsuarios" element={<PageEventosUsuarios />} />                  
                   
                 ]
                 : <Route path="/PageLogin" element={<PageLogin />} />

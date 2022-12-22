@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import '../css/MenuInicial.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap/js/dist/collapse'
 import 'bootstrap/js/dist/offcanvas'
@@ -46,26 +47,30 @@ class MenuInicial extends Component {
 
     render() {
         return (
-            <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+            <nav className="navbar navbar-expand-lg">
                 <div className="container-fluid">
                     <Link className="navbar-brand" to='/' >
-                        <img src='./logo.png' width={80} height={40} alt="Deportes" />
+                        <img src='./Logo.png' width={80} height={40} alt="Deportes" />
                     </Link>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
                     </button>
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul className="navbar-nav mx-auto">
+                        <ul className="navbar-nav">
                             <li className="nav-item" hidden={this.state.estaLoguin}>
-                                <Link className="nav-link" aria-current="page" to='/PageLogin'>Login</Link>
+                                <Link className="nav-link" aria-current="page" to='/PageLogin'>Iniciar Sesión</Link>
                             </li>
 
                             <li className="nav-item" hidden={this.state.estaLoguin}>
                                 <Link className="nav-link" aria-current="page" to='/PageSignin'>Registrarse</Link>
                             </li>
 
-                            <li className="nav-item" hidden={!this.state.estaLoguin}>
+                            <li className="nav-item" hidden={!this.state.estaLoguin || !this.state.admin}>
                                 <Link className="nav-link" aria-current="page" to='/PageEventos'>Eventos</Link>
+                            </li>
+
+                            <li className="nav-item" hidden={!this.state.estaLoguin || this.state.admin}>
+                                <Link className="nav-link" aria-current="page" to='/PageEventosUsuarios'>Eventos</Link>
                             </li>
 
                             <li className="nav-item" hidden={!this.state.estaLoguin||!this.state.admin}>
@@ -81,7 +86,7 @@ class MenuInicial extends Component {
                             </li>
 
                             <li className="nav-item" hidden={!this.state.estaLoguin}>
-                                <Link className="nav-link" onClick={()=>this.cerrarSesion()} to='/'>Salir</Link>
+                                <Link className="nav-link" onClick={()=>this.cerrarSesion()} to='/'>Cerrar Sesión</Link>
                             </li>
                             
 
